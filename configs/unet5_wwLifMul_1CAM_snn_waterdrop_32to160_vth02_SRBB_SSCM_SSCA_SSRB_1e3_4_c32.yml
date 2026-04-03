@@ -1,0 +1,60 @@
+name: SpikeCrossAttentionStereoDeraining
+model_name: unet5_wwLifMul_snn_32to160_SRBB_SSCM_SSCA_SSRB_model
+net_name: SNNSIR
+manual_seed: 100
+resume: false
+datasets:
+  kind: StereoWaterdrop
+  train:
+    dataroot: ./data/StereoWaterdrop/train
+    batch_size: 8
+    patch_size: [128, 128]
+    use_shuffle: true
+    num_worker_per_gpu: 4
+    gpu_id: 0
+  val:
+    dataroot: ./data/StereoWaterdrop/val
+    batch_size: 4
+    patch_size: [128, 128]
+    num_worker_per_gpu: 0
+    val_epochs: 2
+  test:
+    dataroot: ./data/StereoWaterdrop/test
+    batch_size: 1
+    crop_size: 256
+    overlap_size: 8
+    num_worker_per_gpu: 0
+    gpu_id: 0
+network:
+  in_channels: 3
+  out_channels: 3
+  T: 4
+  dim: 32
+  bias: false
+  planes: [32, 64, 96, 128, 160]
+  scale: 2
+  ratio: 8
+  refine_dim: 32
+  refine_block_num: 4
+  v_th: 0.2
+  decay_input: false
+train:
+  epochs: 1000
+  save_dir: ./checkpoints
+  save_freq: 200
+  scheduler:
+    T_max: 1000
+    eta_min: 0.001
+    kind: CosineAnnealingLR
+  optim:
+    lr: 0.001
+    weight_decay: 0.0001
+    betas: [0.9, 0.999]
+    kind: AdamW
+path:
+  pretrain_network: null
+  resume_state: null
+  saved_path: ./checkpoints/SNNSIR/2026-03-15-11-10-19
+logger:
+  print_freq: 1000
+  save_checkpoint_freq: 4000.0
