@@ -81,7 +81,9 @@ SNNSIR/
 
 ## 📦 Pre-trained Models
 
-You can download the pre-trained weights from [link](https://pan.baidu.com/s/1EeSkXi8bowwPyXo79i_VEg?pwd=boyh) (Access Code: **boyh**).
+Pre-trained weights and visual results are available at [Link 1](https://pan.baidu.com/s/1EeSkXi8bowwPyXo79i_VEg?pwd=boyh) (Access Code: **boyh**)and [Link 2](https://pan.baidu.com/s/1BCRZqJjFTNmkraMIonRHNQ?pwd=boyh) (Access Code: **boyh**), respectively.
+
+[Google Drive](https://drive.google.com/drive/folders/1_1pcYhrwenIfSZC3JnxbcEcPpGhO3scx?usp=sharing)
 
 After downloading, please extract and save the weights at `./checkpoints/SNNSIR/xxxx-xx-xx-xx-xx-xx/model_best.pth`. You can find the exact date directory name in the corresponding `.yml` configuration file under `['path']['saved_path']`.
 
