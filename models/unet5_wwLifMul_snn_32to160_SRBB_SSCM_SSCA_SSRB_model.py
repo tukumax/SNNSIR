@@ -177,7 +177,7 @@ class SSRB(nn.Module):
         return x_l, x_r
 
 
-# spike channel modulation
+# spike channel Gating
 class SCM(nn.Module):
     def __init__(self, in_channels, ratio=8, activation=LIF, decay_input=True, v_reset=0., v_th=0.2, padding_mode='reflect'):
         super(SCM, self).__init__()
@@ -200,7 +200,7 @@ class SCM(nn.Module):
         y = avg_y + max_y
         return x * y
 
-# spike spatial modulation
+# spike spatial Gating
 class SSM(nn.Module):
     def __init__(self, in_channles, activation=LIF, decay_input=True, v_reset=0., v_th=0.2, padding_mode='reflect'):
         super(SSM, self).__init__()
@@ -218,7 +218,7 @@ class SSM(nn.Module):
         return x * y
 
 
-# spike stereo convolutional modulation
+# spike stereo modulation
 class SSCM(nn.Module):
     def __init__(self, in_channels, ratio=8, activation=LIF, decay_input=True, v_reset=0., v_th=0.2, padding_mode='reflect'):
         super(SSCM, self).__init__()
